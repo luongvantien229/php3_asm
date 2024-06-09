@@ -41,6 +41,13 @@ class DatabaseSeeder extends Seeder
             'https://cdn.tgdd.vn/Products/Images/44/312320/hp-victus-16-e1105ax-r5-7c0t0pa-thumb-600x600.jpg',
             'https://cdn.tgdd.vn/Products/Images/44/314263/lenovo-thinkpad-e16-gen-1-i7-21jn006uvn-thumb-600x600.jpg',
         ];
+        $color_arr = ['black', 'white', 'red', 'blue', 'green', 'yellow', 'pink', 'purple', 'orange', 'gray'];
+        function generateOddFloat($min, $max) {
+            do {
+                $number = mt_rand($min * 10, $max * 10) / 10;
+            } while (intval($number) % 2 == 0);
+            return $number;
+        }
         for($i=0; $i<1000; $i++){
             DB::table('product')->insert([
                 'producer_id'=>mt_rand(1, 10),
@@ -52,7 +59,10 @@ class DatabaseSeeder extends Seeder
                 'hot'=>mt_rand(0, 1),
                 'hidden'=>mt_rand(0, 1),
                 'nature'=>mt_rand(0, 3),
+                'color'=>Arr::random($color_arr),
+                'weight'=>generateOddFloat(10, 20),
             ]);
         }
+       
     }
 }

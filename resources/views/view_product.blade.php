@@ -1,8 +1,8 @@
 <div class="row mt-5">
-    <h1 class="mb-3">Sản phẩm bán chạy</h1>
-    @foreach ($hot_product as $product)
+    <h1 class="mb-3">Sản phẩm xem nhiều</h1>
+    @foreach ($view_product as $product)
     <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card" style="padding: 10px;">
+        <div class="card" style="padding: 10px">
             <img src="{{ $product->image }}" class="card-img-top" alt="Product">
             <div class="card-body">
                 <h5 class="card-title">{{ $product->name }}</h5>

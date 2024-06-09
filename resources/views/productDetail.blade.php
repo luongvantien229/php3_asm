@@ -21,4 +21,6 @@
             </div>
         </div>
     </div>
+    @include('comment')
+    @include('product_same_id')
 @endsection
