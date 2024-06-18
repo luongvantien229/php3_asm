@@ -19,13 +19,13 @@ Sản phẩm
     </div>
     <!-- Product List -->
     <div class="col-sm-9 col">
-       
-    @if ($producer_id)
-    <h1 class="bg-success mt-3 p-2 fs-5 text-white">Sản phẩm của {{ $producer->firstWhere('id', $producer_id)->name }}</h1>
-@else
-    <h1 class="bg-success mt-3 p-2 fs-5 text-white">Tất cả sản phẩm</h1>
-@endif
-        
+
+        @if ($producer_id)
+        <h1 class="bg-success mt-3 p-2 fs-5 text-white">Sản phẩm của {{ $producer->firstWhere('id', $producer_id)->name }}</h1>
+        @else
+        <h1 class="bg-success mt-3 p-2 fs-5 text-white">Tất cả sản phẩm</h1>
+        @endif
+
         <div class="row" id="data">
             @foreach ($list_product as $product)
             <div class="col-lg-4 col-md-6 mb-4">

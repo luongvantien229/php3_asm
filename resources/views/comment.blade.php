@@ -1,4 +1,4 @@
-
+@if (Auth::check())
 <h2 class="bg-success mt-3 p-2 fs-5 text-white"> Bình luận sản phẩm</h2>
 
 <form class="border border-success p-3 m-2" method="post" action="/comment_save">
@@ -31,8 +31,7 @@ name="content" rows="4" placeholder="Mời nhập bình luận"></textarea>
 <p class="d-flex justify-content-between">
 
 
-<!-- <b>{{$comment->User}}</b> -->
-<!-- ->name -->
+<b>{{$comment->User->name}}</b>
 <span>{{ gmdate('d/m/Y H:m:s', strtotime($comment->date)+3600*7)}}</span>
 
 </p>
@@ -44,3 +43,4 @@ name="content" rows="4" placeholder="Mời nhập bình luận"></textarea>
 @endforeach
 
 </div>
+@endif

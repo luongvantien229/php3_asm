@@ -39,18 +39,22 @@
 
 
             <div class="text-end">
+                @if (Auth::check())
+                <button type="button" class="btn btn-outline-dark me-2">
+                    <a class="" style="text-decoration: none;" href="/change-password/{{Auth::user()->id}}">{{Auth::user()->name}}</a>
+                </button>
+                <button type="button" class="btn btn-warning">
+                    <a class="text-secondary" style="text-decoration: none" href="/logout">Đăng xuất</a>
+                </button>
+                @else
                 <button type="button" class="btn btn-outline-dark me-2">
                     <a class="" style="text-decoration: none;" href="/login">Đăng nhập</a>
                 </button>
-                <!-- <button type="button" class="btn btn-outline-dark me-2">
-                    <a class="" style="text-decoration: none;" href="/forgot"></a>
-                </button> -->
+
                 <button type="button" class="btn btn-warning">
                     <a class="text-secondary" style="text-decoration: none" href="/register">Đăng kí</a>
                 </button>
-                <!-- <button type="button" class="btn btn-warning">
-                    <a class="text-secondary" style="text-decoration: none">Logout</a>
-                </button> -->
+                @endif
             </div>
         </div>
     </div>

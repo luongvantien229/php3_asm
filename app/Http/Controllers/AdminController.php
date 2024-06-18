@@ -4,13 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
 
     function index()
     {
-        return view("admin/index");
+        $count_producer = DB::table('producer')->count();
+        $count_product = DB::table('product')->count();
+        $count_user = DB::table('users')->count();
+        // 5 user mới
+        $new_user = DB::table('users')->orderBy('id', 'desc')->limit(5)->get();
+        // 5 nhà phân phối mới
+        $new_producer = DB::table('producer')->orderBy('id', 'desc')->limit(5)->get();
+        // 10 sản phẩm mới
+        $new_product = DB::table('product')->orderBy('id', 'desc')->limit(10)->get();
+        return view("admin/index", compact('count_producer', 'count_product', 'count_user', 'new_user', 'new_producer', 'new_product'));
     }
 
     function login()
@@ -40,4 +50,5 @@ class AdminController extends Controller
 
         return redirect('admin/login')->with('message', 'Bạn đã thoát admin');
     }
+    
 }

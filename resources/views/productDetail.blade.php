@@ -16,7 +16,7 @@
                 <p>Màu: {{$product->color}}</p>
                 <p>Cân nặng: {{$product->weight}}</p>
                 <p>Tính chất: {{$product->nature}}</p>
-                <p><input type="number" value="1"></p>
+                <!-- <p><input type="number" value="1"></p> -->
                 <a href="/addcart/{{$product->id}}" class="btn btn-primary">Thêm vào giỏ hàng</a>
             </div>
         </div>

@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Arr;
 use App\Models\product;
 use App\Models\comment;
+use App\Mail\SendEmail;
+use Illuminate\Support\Facades\Mail;
 
 use Illuminate\Pagination\Paginator;
 
@@ -59,7 +61,7 @@ class SiteController extends Controller
                 ->where('hidden', 1)
                 ->where(function ($queryBuilder) use ($query) {
                     $queryBuilder->where('name', 'like', "%$query%")
-                        ->orWhere('description', 'like', "%$query%");
+                        ->orWhere(' description', 'like', "%$query%");
                 })
                 ->paginate($perpage);
         } elseif ($producer_id) {
@@ -206,10 +208,29 @@ class SiteController extends Controller
 
         return redirect('/viewcart');
     }
-
+    function download()
+    {
+        return view("download");
+    }
 
     function notification()
     {
         return view('notification');
+    }
+    function contact()
+    {
+        return view('contact');
+    }
+    function contact_(Request $request)
+    {
+        $arr = request()->post();
+        $ht = trim(strip_tags($arr['ht']));
+        $em = trim(strip_tags($arr['em']));
+        $nd = trim(strip_tags($arr['nd']));
+        $adminEmail = 'tienlvps31619@fpt.edu.vn'; //Gửi thư đến ban quản trị
+        Mail::mailer('smtp')->to($adminEmail)
+            ->send(new SendEmail($ht, $em, $nd));
+        $request->session()->flash('message', "Đã gửi mail");
+        return redirect("/notification")->with(['notification' => 'Đã gửi mail']);
     }
 }

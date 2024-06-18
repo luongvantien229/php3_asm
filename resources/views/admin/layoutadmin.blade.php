@@ -31,6 +31,9 @@
                     <a class="nav-link" href="/admin/product">Product</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/admin/user">User</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/admin/logout" ng-click="logout()">Logout</a>
                 </li>
             </ul>
